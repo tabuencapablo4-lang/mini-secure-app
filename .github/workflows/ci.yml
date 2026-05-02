@@ -41,7 +41,7 @@ jobs:
           curl -I http://localhost:3001 || true
 
       - name: Ejecutar ZAP Scan
-        uses: zaproxy/action-baseline@v0.10.0
+        uses: zaproxy/action-baseline@v0.9.0
         with:
           target: 'http://localhost:3001'
           cmd_options: '-r report_html.html'
