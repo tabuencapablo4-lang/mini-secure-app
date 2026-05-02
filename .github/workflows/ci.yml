@@ -47,6 +47,7 @@ jobs:
           cmd_options: '-r report_html.html'
 
       - name: Subir reporte
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ZAP-Report
