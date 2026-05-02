@@ -41,10 +41,12 @@ jobs:
           curl -I http://localhost:3001 || true
 
       - name: Ejecutar ZAP Scan
-        uses: zaproxy/action-baseline@v0.9.0
-        with:
-          target: 'http://localhost:3001'
-          cmd_options: '-r report_html.html'
+        run: |
+          docker run --rm \
+            --network host \
+            -v $(pwd):/zap/wrk/:rw \
+            ghcr.io/zaproxy/zaproxy:stable \
+            zap-baseline.py -t http://localhost:3001 -r report_html.html || true
 
       - name: Subir reporte
         if: always()
