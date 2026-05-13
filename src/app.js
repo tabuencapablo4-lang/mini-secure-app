@@ -174,7 +174,7 @@ app.get('/search', (req, res) => {
     <html>
       <head><title>Búsqueda</title></head>
       <body>
-        <h1>Resultados de búsqueda para: ${q}</h1>
+        <h1>Resultados de búsqueda para: ${encodeURIComponent(q)}</h1>
         <ul>${items}</ul>
         <p><a href="/">Volver</a></p>
       </body>
