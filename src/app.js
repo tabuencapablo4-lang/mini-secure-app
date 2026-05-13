@@ -75,7 +75,7 @@ app.post('/login', (req, res) => {
     <html>
       <head><title>Bienvenido</title></head>
       <body>
-        <h1>Bienvenido, ${username || 'usuario'}</h1>
+        <h1>Bienvenido, ${encodeURIComponent(username || 'usuario')}</h1>
         <p>Login simulado correctamente.</p>
         <p><a href="/">Ir al inicio</a></p>
       </body>
@@ -101,7 +101,7 @@ app.get('/tickets', (req, res) => {
       <head><title>Tickets</title></head>
       <body>
         <h1>Listado de tickets</h1>
-        <ul>${items}</ul>
+        <ul>${items.replace(/&/g,'&amp;')}</ul>
         <p><a href="/">Volver</a></p>
       </body>
     </html>

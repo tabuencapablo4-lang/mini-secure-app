@@ -4,6 +4,9 @@ services:
     image: prom/prometheus:latest
     container_name: prometheus
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
     ports:
       - "9090:9090"
     volumes:
@@ -12,6 +15,9 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     restart: unless-stopped
+    security_opt:
+       - no-new-privileges:true
+    read_only: true
     ports:
       - "3000:3000"
     volumes:
